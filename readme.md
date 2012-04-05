@@ -4,7 +4,11 @@ More about d::light : http://nicole-banana.com
 # Contents
 ## dlight-pad
 Control Dlight from everywhere
-
+### Installation
+Choose the file for your device    
+* Control (javascript) file    
+* TouchOSC file    
+* TouchOSC file to use with a dedicated pure data patch
 ## dlight-seqcon
 Trig your SeqCon presets using Dlight.
 This simply utility rewrite '/seq/go x' osc command commin from Dlight to a '/go x' understandable wy SeqCon.

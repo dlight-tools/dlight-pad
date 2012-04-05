@@ -1,0 +1,14 @@
+#N canvas 590 117 314 184 10;
+#X declare -lib mrpeach/udpreceive;
+#X declare -lib mrpeach/udpsend;
+#X obj 12 135 import mrpeach/udpreceive;
+#X obj 12 109 import mrpeach/udpsend;
+#X obj 11 31 route /seq/go;
+#X obj 10 60 prepend /go;
+#X obj 10 85 udpsend localhost 5500;
+#X obj 11 6 udpreceive 7001;
+#X text 157 60 DLight-SeqCon-0.1;
+#X text 157 74 2011 - Renaud Rubiano renaud@didascalie.net;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 2 0;

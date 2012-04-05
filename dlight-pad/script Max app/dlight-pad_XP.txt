@@ -1,2 +1,0 @@
-open thispatcher
-include "C:/Documents and Settings/Renaud Rubiano/Mes documents/My Dropbox/#Documents/#Dlight/dlight-pad/graphics/dlight-pad.icns"

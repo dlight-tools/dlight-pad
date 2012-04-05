@@ -1,2 +1,0 @@
-open thispatcher
-appicon work:/Users/Renaud/Dropbox/\#Projets/dlight-pad/graphics/dlight-pad.icns

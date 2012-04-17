@@ -187,7 +187,7 @@ pages = [
     "bounds": [.005,.148,.425,.126],
     "width": 1, "height": 1,
     "value": "",
-    "align": "center",
+    "align": "left",
 	"size":28,
      "oninit" : "saisieText.label.style.borderStyle = 'solid';",
  },
@@ -1004,14 +1004,6 @@ pages = [
         "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
 },
 
-{
-	"name": "timeLabel",
-	"type": "Label",
-    "bounds": [.665,.003,.330,.142],
-	"value":"time",
-	"size":24,
-	"oninit": "control.getCurrentTime()"
-},
 
 {
     "name" : "x1Slider",

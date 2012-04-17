@@ -184,7 +184,7 @@ pages = [
 {
    "name": "saisieText",
     "type": "Label",
-    "bounds": [.005,.148,.745,.126],
+    "bounds": [.005,.148,.425,.126],
     "width": 1, "height": 1,
     "value": "",
     "align": "center",
@@ -192,9 +192,29 @@ pages = [
      "oninit" : "saisieText.label.style.borderStyle = 'solid';",
  },
 {
+        "name": "enter",
+        "type": "Button",
+        "bounds": [.45,.149,.255,.126],
+    "mode": "contact",
+    "min": 0,
+    "max": 1,
+     "color": "#FFFFFF",
+    "stroke": "#aaaaaa",
+   "address"  : "/pad/enter",
+    "oninit": "enter.fillDiv.style.borderWidth = '4px';",
+},
+{
+    "name": "enterLabel",
+    "type": "Label",
+    "bounds": [.45,.149,.255,.126],
+    "value": "ENTER",
+    "align": "center",
+},
+
+{
     "name": "clear",
     "type": "Button",
-    "bounds": [.770,.149,.210,.126],
+    "bounds": [.72,.149,.255,.126],
     "mode": "contact",
     "min": 0,
     "max": 1,
@@ -206,7 +226,7 @@ pages = [
 {
     "name": "clearLabel",
     "type": "Label",
-    "bounds": [.775,.145,.220,.142],
+    "bounds": [.72,.145,.255,.142],
     "value": "CLEAR",
     "align": "center",
 },
@@ -961,7 +981,6 @@ pages = [
    "address"  : "/checkcirc/launch",
     "oninit": "launch.fillDiv.style.borderWidth = '4px';",
         "ontouchstart": "if(this.value == this.max) { control.launchButtonWarning(); } else { control.launchButtonUnWarn(); }",
-
 },
 {
     "name": "launchLabel",
@@ -976,6 +995,93 @@ pages = [
 ],
 /********** PAGE 3 *************/
 [
+{
+        "name": "TitleLabel",
+        "type": "Label",
+        "bounds": [.005,.003,.660,.142],
+        "value": "Sequence Remote Controller",
+        "align": "center",
+        "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
+},
+
+{
+	"name": "timeLabel",
+	"type": "Label",
+    "bounds": [.665,.003,.330,.142],
+	"value":"time",
+	"size":24,
+	"oninit": "control.getCurrentTime()"
+},
+
+{
+    "name" : "x1Slider",
+    "type" : "Slider",
+    "x" : .670, "y" : .275,
+    "width" : .15, "height" : .5,
+    "min" : 0, "max" : 255,
+    "address" : "/seq/fadeX1",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#CC0000",
+"startingValue": 255,
+"ontouchmove": "if(this.value > 253) this.setValue(255);if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "X1Label",
+	    "type": "Label",
+	    "x": .670 + .04,
+	    "y": .120,
+	    "width": .1,
+	    "height": .1,
+	    "color": "#CC0000",
+	    "value": "X1",
+        "size":24,
+	},
+
+
+{
+    "name" : "x2Slider",
+    "type" : "Slider",
+    "x" : .840, "y" : .275,
+    "width" : .15, "height" : .5,
+    "min" : 0, "max" : 255,
+    "address" : "/seq/fadeX2",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "X2Label",
+	    "type": "Label",
+	    "x": .840 + .04,
+	    "y": .120,
+	    "width": .1,
+	    "height": .1,
+	    "color": "#33CC00",
+	    "value": "X2",
+        "size":24,
+	},
+{
+    "name": "goButton",
+    "type": "Button",
+    "bounds": [.05,.7,.55,.142],
+    "mode": "contact",
+    "min": 0,
+    "max": 1,
+     "color": "#993333",
+    "stroke": "#aaaaaa",
+   "address"  : "/seq/go",
+    "oninit": "launch.fillDiv.style.borderWidth = '4px';",
+},
+{
+    "name": "gobuttonLabel",
+    "type": "Label",
+    "bounds": [.05,.7,.55,.142],
+    "value": "GO",
+    "align": "center",
+    "backgroundColor": "rgba(153,51,51,.5)",
+},
 
 ],
 

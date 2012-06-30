@@ -3,7 +3,7 @@ loadedInterfaceName = "D::Light Control";
 interfaceOrientation = "portrait";
 
 
-infoText = "Remote Controller for D::light (www.nicole-banana.com)";
+infoText = "Remote Control for D::light (www.nicole-banana.com)";
 
 
 

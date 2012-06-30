@@ -1,78 +1,11 @@
-loadedInterfaceName = "D::Light";
+loadedInterfaceName = "D::Light Control";
 
 interfaceOrientation = "portrait";
 
 
 infoText = "Remote Controller for D::light (www.nicole-banana.com)";
 
-/******* Constants appear on all pages *******/
 
-
-
-constants = [
-
-
-{
-    "name": "prevBtn",
-    "type": "Button",
-    "bounds": [.665,.855,.165,.142], 
-    "mode": "contact",    
-    "ontouchstart": "control.changePage('previous');",
-    "stroke": "#aaa",    
-},
-{
-    "name": "prevLabel",
-    "type": "Label",
-    "bounds": [.665,.855,.165,.142],
-    "value": "Down",
-    "align": "center",
- 	"backgroundColor": "rgba(255,255,0,.5)",
- 	
-    
-},
-
-{
-    "name": "nextBtn",
-    "type": "Button",
-    "bounds": [.830,.855,.165,.142], 
-    "mode": "contact",    
-    "ontouchstart": "control.changePage('next');",
-    "stroke": "#aaa",    
-},
-{
-    "name": "nextLabel",
-    "type": "Label",
-    "bounds": [.830,.855,.165,.142],
-    "value": "Up",
-    "align": "center",
- 	"backgroundColor": "rgba(255,255,0,.5)",
- 	
-    
-},
-{
-    "name": "refresh",
-    "type": "Button",
-    "bounds": [.330,.003,.330,.142],
-    "mode": "contact",
-    "min": 0,
-    "max": 1,
-     "color": "#FFFFFF",
-    "stroke": "#aaaaaa",
-"ontouchstart": "interfaceManager.refreshInterface()",
-},
-{
-    "name": "tabButton",
-    "type": "Button",
-    "bounds": [.005, .003, .330, .142],
-    "mode": "toggle",
-    "color": "#007070",
-    "stroke": "#008080",
-    "isLocal": true,
-    "ontouchstart": "if(this.value == this.max) { control.showToolbar(); } else { control.hideToolbar(); }",
-    "label": "menu",
-},
-
-];
 
 
 
@@ -171,6 +104,85 @@ oscManager.delegate = {
     }
 }
 
+/******* Constants appear on all pages *******/
+
+
+
+constants = [
+
+{
+    "name": "tabButton",
+    "type": "Button",
+    "bounds": [.005,.003,.330,.142],
+    "mode": "toggle",
+    "stroke": "#aaa",
+    "isLocal": true,
+    "ontouchstart": "if(this.value == this.max) { control.showToolbar(); } else { control.hideToolbar(); }",
+},
+{
+    "name": "tabButtonLabel",
+    "type": "Label",
+    "bounds": [.005,.003,.330,.142],
+    "value": "Menu",
+    "align": "center",
+
+},
+{
+    "name": "refresh",
+    "type": "Button",
+    "bounds": [.330,.003,.330,.142],
+    "mode": "contact",
+    "color": "#FFFFFF",
+    "stroke": "#aaaaaa",
+    "ontouchstart": "interfaceManager.refreshInterface();",
+},
+
+{
+	"name": "timeLabel",
+	"type": "Label",
+    "bounds": [.665,.003,.330,.142],
+	"value":"time",
+	"size": 22,
+	"oninit": "control.getCurrentTime();",
+},
+
+{
+    "name": "prevBtn",
+    "type": "Button",
+    "bounds": [.665,.855,.165,.142], 
+    "mode": "contact",    
+    "ontouchstart": "control.changePage('previous');",
+    "stroke": "#aaa",    
+},
+{
+    "name": "prevLabel",
+    "type": "Label",
+    "bounds": [.665,.855,.165,.142],
+    "value": "Down",
+    "align": "center",
+ 	"backgroundColor": "rgba(255,255,0,.5)",
+ 	
+    
+},
+
+{
+    "name": "nextBtn",
+    "type": "Button",
+    "bounds": [.830,.855,.165,.142], 
+    "mode": "contact",    
+    "ontouchstart": "control.changePage('next');",
+    "stroke": "#aaa",    
+},
+{
+    "name": "nextLabel",
+    "type": "Label",
+    "bounds": [.830,.855,.165,.142],
+    "value": "Up",
+    "align": "center",
+ 	"backgroundColor": "rgba(255,255,0,.5)",
+
+},
+];
 
 pages = [
 /********** PAGE 1 *************/
@@ -184,14 +196,7 @@ pages = [
         "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
 },
 
-{
-	"name": "timeLabel",
-	"type": "Label",
-    "bounds": [.665,.003,.330,.142],
-	"value":"time",
-	"size":24,
-	"oninit": "control.getCurrentTime()"
-},
+
 {
    "name": "saisieText",
     "type": "Label",
@@ -636,21 +641,23 @@ pages = [
         "bounds": [.330,.003,.330,.142],
         "value": "Channel Check",
         "align": "center",
-        "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
+        "oninit" : "TitleLabel2.label.style.fontFamily = 'arial';"
 },
 
 {
 	"name": "checkLevelDisplay",
 	"type": "Label",
-    "bounds": [.665,.003,.330,.142],
+    "bounds": [.454,.148,.300,.130],
 	"value":"50%",
+	    "stroke": "#aaaaaa",
 	"size":24,
-        "oninit" : "checkLevelDisplay.label.style.fontFamily = 'arial';"
+//        "oninit" : "checkLevelDisplay.label.style.fontFamily = 'arial';"
+        "oninit" : "checkLevelDisplay.label.style.borderWidth = '2px'; checkLevelDisplay.label.style.borderStyle = 'solid';",
 },
 {
    "name": "inputCheck",
     "type": "Label",
-    "bounds": [.005,.148,.745,.126],
+    "bounds": [.005,.148,.425,.126],
     "width": 1, "height": 1,
     "value": "",
     "align": "center",
@@ -1011,20 +1018,12 @@ pages = [
 /********** PAGE 3 *************/
 [
 {
-        "name": "TitleLabel",
+        "name": "TitleLabel3",
         "type": "Label",
         "bounds": [.330,.003,.330,.142],
         "value": "Sequence",
         "align": "center",
-        "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
-},
-{
-	"name": "timeLabel",
-	"type": "Label",
-    "bounds": [.665,.003,.330,.142],
-	"value":"time",
-	"size":24,
-	"oninit": "control.getCurrentTime()"
+        "oninit" : "TitleLabel3.label.style.fontFamily = 'arial';"
 },
 
 {
@@ -1095,6 +1094,7 @@ pages = [
     "value": "GO",
     "align": "center",
     "backgroundColor": "rgba(0,255,0,.5)",
+    "size" : "36",
 },
 {
     "name": "gobackButton",
@@ -1201,5 +1201,3 @@ pages = [
 
 ];
 
-
-control.changePage(0);

@@ -1,67 +1,11 @@
-loadedInterfaceName = "D::Light";
+loadedInterfaceName = "D::Light Control";
 
 interfaceOrientation = "portrait";
 
 
-infoText = "Remote Controller for D::light (www.nicole-banana.com)";
-
-/******* Constants appear on all pages *******/
+infoText = "Remote Control for D::light (www.nicole-banana.com)";
 
 
-
-constants = [
-
-
-{
-    "name": "prevBtn",
-    "type": "Button",
-    "bounds": [.665,.855,.165,.142], 
-    "mode": "contact",    
-    "ontouchstart": "control.changePage('previous');",
-    "stroke": "#aaa",    
-},
-{
-    "name": "prevLabel",
-    "type": "Label",
-    "bounds": [.665,.855,.165,.142],
-    "value": "Down",
-    "align": "center",
- 	"backgroundColor": "rgba(255,255,0,.5)",
- 	
-    
-},
-
-{
-    "name": "nextBtn",
-    "type": "Button",
-    "bounds": [.830,.855,.165,.142], 
-    "mode": "contact",    
-    "ontouchstart": "control.changePage('next');",
-    "stroke": "#aaa",    
-},
-{
-    "name": "nextLabel",
-    "type": "Label",
-    "bounds": [.830,.855,.165,.142],
-    "value": "Up",
-    "align": "center",
- 	"backgroundColor": "rgba(255,255,0,.5)",
- 	
-    
-},
-{
-    "name": "refresh",
-    "type": "Button",
-    "bounds": [.005,.003,.660,.142],
-    "mode": "contact",
-    "min": 0,
-    "max": 1,
-     "color": "#FFFFFF",
-    "stroke": "#aaaaaa",
-"ontouchstart": "interfaceManager.refreshInterface()",
-},
-
-];
 
 
 
@@ -160,17 +104,37 @@ oscManager.delegate = {
     }
 }
 
+/******* Constants appear on all pages *******/
 
-pages = [
-/********** PAGE 1 *************/
-[
+
+
+constants = [
+
 {
-        "name": "TitleLabel",
-        "type": "Label",
-        "bounds": [.005,.003,.660,.142],
-        "value": "D::Light Remote Controller",
-        "align": "center",
-        "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
+    "name": "tabButton",
+    "type": "Button",
+    "bounds": [.005,.003,.330,.142],
+    "mode": "toggle",
+    "stroke": "#aaa",
+    "isLocal": true,
+    "ontouchstart": "if(this.value == this.max) { control.showToolbar(); } else { control.hideToolbar(); }",
+},
+{
+    "name": "tabButtonLabel",
+    "type": "Label",
+    "bounds": [.005,.003,.330,.142],
+    "value": "Menu",
+    "align": "center",
+
+},
+{
+    "name": "refresh",
+    "type": "Button",
+    "bounds": [.330,.003,.330,.142],
+    "mode": "contact",
+    "color": "#FFFFFF",
+    "stroke": "#aaaaaa",
+    "ontouchstart": "interfaceManager.refreshInterface();",
 },
 
 {
@@ -178,9 +142,61 @@ pages = [
 	"type": "Label",
     "bounds": [.665,.003,.330,.142],
 	"value":"time",
-	"size":24,
-	"oninit": "control.getCurrentTime()"
+	"size": 22,
+	"oninit": "control.getCurrentTime();",
 },
+
+{
+    "name": "prevBtn",
+    "type": "Button",
+    "bounds": [.665,.855,.165,.142], 
+    "mode": "contact",    
+    "ontouchstart": "control.changePage('previous');",
+    "stroke": "#aaa",    
+},
+{
+    "name": "prevLabel",
+    "type": "Label",
+    "bounds": [.665,.855,.165,.142],
+    "value": "Down",
+    "align": "center",
+ 	"backgroundColor": "rgba(255,255,0,.5)",
+ 	
+    
+},
+
+{
+    "name": "nextBtn",
+    "type": "Button",
+    "bounds": [.830,.855,.165,.142], 
+    "mode": "contact",    
+    "ontouchstart": "control.changePage('next');",
+    "stroke": "#aaa",    
+},
+{
+    "name": "nextLabel",
+    "type": "Label",
+    "bounds": [.830,.855,.165,.142],
+    "value": "Up",
+    "align": "center",
+ 	"backgroundColor": "rgba(255,255,0,.5)",
+
+},
+];
+
+pages = [
+/********** PAGE 1 *************/
+[
+{
+        "name": "TitleLabel",
+        "type": "Label",
+        "bounds": [.330,.003,.330,.142],
+        "value": "D::Light Remote",
+        "align": "center",
+        "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
+},
+
+
 {
    "name": "saisieText",
     "type": "Label",
@@ -194,41 +210,43 @@ pages = [
 {
         "name": "enter",
         "type": "Button",
-        "bounds": [.45,.149,.255,.126],
+        "bounds": [.454,.148,.265,.134],
     "mode": "contact",
     "min": 0,
     "max": 1,
      "color": "#FFFFFF",
     "stroke": "#aaaaaa",
    "address"  : "/pad/enter",
-    "oninit": "enter.fillDiv.style.borderWidth = '4px';",
+    "oninit": "enter.fillDiv.style.borderWidth = '2px';",
 },
 {
     "name": "enterLabel",
     "type": "Label",
-    "bounds": [.45,.149,.255,.126],
+    "bounds": [.464,.154,.255,.126],
     "value": "ENTER",
     "align": "center",
+    "backgroundColor": "rgba(100,200,100,1)",
 },
 
 {
     "name": "clear",
     "type": "Button",
-    "bounds": [.72,.149,.255,.126],
+    "bounds": [.728,.148,.258,.134],
     "mode": "contact",
     "min": 0,
     "max": 1,
      "color": "#FFFFFF",
     "stroke": "#aaaaaa",
    "address"  : "/pad/clear",
-    "oninit": "clear.fillDiv.style.borderWidth = '4px';",
+    "oninit": "clear.fillDiv.style.borderWidth = '2px';",
 },
 {
     "name": "clearLabel",
     "type": "Label",
-    "bounds": [.72,.145,.255,.142],
+    "bounds": [.736,.154,.248,.126],
     "value": "CLEAR",
     "align": "center",
+    "backgroundColor": "rgba(255,100,100,1)",
 },
 
 {
@@ -379,7 +397,8 @@ pages = [
     "name": "levelLabel",
     "type": "Label",
     "bounds": [.665,.429,.330,.142],
-    "value": "LEVEL",
+    "value": "@",
+    "size" : 28,
     "align": "center",
  	"backgroundColor": "rgba(255,102,0,.5)"
 },
@@ -619,24 +638,26 @@ pages = [
 {
         "name": "TitleLabel2",
         "type": "Label",
-        "bounds": [.005,.003,.660,.142],
-        "value": "Channel Check Controller",
+        "bounds": [.330,.003,.330,.142],
+        "value": "Channel Check",
         "align": "center",
-        "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
+        "oninit" : "TitleLabel2.label.style.fontFamily = 'arial';"
 },
 
 {
 	"name": "checkLevelDisplay",
 	"type": "Label",
-    "bounds": [.665,.003,.330,.142],
+    "bounds": [.454,.148,.300,.130],
 	"value":"50%",
+	    "stroke": "#aaaaaa",
 	"size":24,
-        "oninit" : "checkLevelDisplay.label.style.fontFamily = 'arial';"
+//        "oninit" : "checkLevelDisplay.label.style.fontFamily = 'arial';"
+        "oninit" : "checkLevelDisplay.label.style.borderWidth = '2px'; checkLevelDisplay.label.style.borderStyle = 'solid';",
 },
 {
    "name": "inputCheck",
     "type": "Label",
-    "bounds": [.005,.148,.745,.126],
+    "bounds": [.005,.148,.425,.126],
     "width": 1, "height": 1,
     "value": "",
     "align": "center",
@@ -646,21 +667,22 @@ pages = [
 {
     "name": "clearCheck",
     "type": "Button",
-    "bounds": [.770,.149,.210,.126],
+    "bounds": [.770,.148,.218,.133],
     "mode": "contact",
     "min": 0,
     "max": 1,
      "color": "#FFFFFF",
     "stroke": "#aaaaaa",
    "address"  : "/checkcirc/clear",
-    "oninit": "clearCheck.fillDiv.style.borderWidth = '4px';",
+    "oninit": "clearCheck.fillDiv.style.borderWidth = '2px';",
 },
 {
     "name": "clearCheckLabel",
     "type": "Label",
-    "bounds": [.775,.145,.220,.142],
+    "bounds": [.777,.154,.207,.125],
     "value": "CLEAR",
     "align": "center",
+    "backgroundColor": "rgba(255,100,100,1)",
 },
 
 {
@@ -996,20 +1018,19 @@ pages = [
 /********** PAGE 3 *************/
 [
 {
-        "name": "TitleLabel",
+        "name": "TitleLabel3",
         "type": "Label",
-        "bounds": [.005,.003,.660,.142],
-        "value": "Sequence Remote Controller",
+        "bounds": [.330,.003,.330,.142],
+        "value": "Sequence",
         "align": "center",
-        "oninit" : "TitleLabel.label.style.fontFamily = 'arial';"
+        "oninit" : "TitleLabel3.label.style.fontFamily = 'arial';"
 },
-
 
 {
     "name" : "x1Slider",
     "type" : "Slider",
-    "x" : .670, "y" : .275,
-    "width" : .15, "height" : .5,
+    "x" : .680, "y" : .145,
+    "width" : .15, "height" : .640,
     "min" : 0, "max" : 255,
     "address" : "/seq/fadeX1",
     "isVertical" : true,
@@ -1022,7 +1043,7 @@ pages = [
 	    "name": "X1Label",
 	    "type": "Label",
 	    "x": .670 + .04,
-	    "y": .120,
+	    "y": .760,
 	    "width": .1,
 	    "height": .1,
 	    "color": "#CC0000",
@@ -1034,8 +1055,8 @@ pages = [
 {
     "name" : "x2Slider",
     "type" : "Slider",
-    "x" : .840, "y" : .275,
-    "width" : .15, "height" : .5,
+    "x" : .840, "y" : .145,
+    "width" : .15, "height" : .640,
     "min" : 0, "max" : 255,
     "address" : "/seq/fadeX2",
     "isVertical" : true,
@@ -1047,7 +1068,7 @@ pages = [
 	    "name": "X2Label",
 	    "type": "Label",
 	    "x": .840 + .04,
-	    "y": .120,
+	    "y": .760,
 	    "width": .1,
 	    "height": .1,
 	    "color": "#33CC00",
@@ -1057,7 +1078,7 @@ pages = [
 {
     "name": "goButton",
     "type": "Button",
-    "bounds": [.05,.7,.55,.142],
+    "bounds": [.005,.145,.655,.330],
     "mode": "contact",
     "min": 0,
     "max": 1,
@@ -1069,15 +1090,357 @@ pages = [
 {
     "name": "gobuttonLabel",
     "type": "Label",
-    "bounds": [.05,.7,.55,.142],
+    "bounds": [.005,.145,.655,.330],
     "value": "GO",
     "align": "center",
-    "backgroundColor": "rgba(153,51,51,.5)",
+    "backgroundColor": "rgba(0,255,0,.5)",
+    "size" : "36",
 },
+{
+    "name": "gobackButton",
+    "type": "Button",
+    "bounds": [.005,.480,.655,.150],
+    "mode": "contact",
+    "min": 0,
+    "max": 1,
+     "color": "#993333",
+    "stroke": "#aaaaaa",
+   "address"  : "/seq/goback",
+    "oninit": "launch.fillDiv.style.borderWidth = '4px';",
+},
+{
+    "name": "gobackbuttonLabel",
+    "type": "Label",
+    "bounds": [.005,.480,.655,.150],
+    "value": "GO BACK",
+    "align": "center",
+    "backgroundColor": "rgba(255,20,51,.5)",
+},
+{
+    "name": "pauseButton",
+    "type": "Button",
+    "bounds": [.005,.635,.655,.150],
+    "mode": "contact",
+    "min": 0,
+    "max": 1,
+     "color": "#993333",
+    "stroke": "#aaaaaa",
+   "address"  : "/seq/pause",
+    "oninit": "launch.fillDiv.style.borderWidth = '4px';",
+},
+{
+    "name": "pausebuttonLabel",
+    "type": "Label",
+    "bounds": [.005,.635,.655,.150],
+    "value": "PAUSE",
+    "align": "center",
+    "backgroundColor": "rgba(255,20,51,.5)",
+},
+{
+    "name": "dboButton",
+    "type": "Button",
+    "bounds": [.005,.790,.210,.205],
+    "mode": "contact",
+    "min": 0,
+    "max": 1,
+     "color": "#993333",
+    "stroke": "#fff",
+   "address"  : "/pad/blackout",
+    "oninit": "launch.fillDiv.style.borderWidth = '2px';",
+},
+{
+    "name": "dboButtonLabel",
+    "type": "Label",
+    "bounds": [.008,.792,.202,.201],
+    "value": "DBO",
+    "align": "center",
+    "backgroundColor": "rgba(0,0,0,1)",
+},
+{
+    "name": "liveButton",
+    "type": "Button",
+    "bounds": [.226,.790,.217,.205],
+    "mode": "contact",
+    "min": 0,
+    "max": 1,
+     "color": "#993333",
+    "stroke": "#fff",
+   "address"  : "/pad/scene",
+    "oninit": "launch.fillDiv.style.borderWidth = '2px';",
+},
+{
+    "name": "liveButtonLabel",
+    "type": "Label",
+    "bounds": [.229,.792,.202,.201],
+    "value": "Live",
+    "align": "center",
+    "backgroundColor": "rgba(255,0,0,1)",
+},
+{
+    "name": "blindButton",
+    "type": "Button",
+    "bounds": [.446,.790,.217,.205],
+    "mode": "contact",
+    "min": 0,
+    "max": 1,
+     "color": "#993333",
+    "stroke": "#fff",
+   "address"  : "/pad/prepa",
+    "oninit": "launch.fillDiv.style.borderWidth = '2px';",
+},
+{
+    "name": "blindButtonLabel",
+    "type": "Label",
+    "bounds": [.451,.792,.204,.201],
+    "value": "Blind",
+    "align": "center",
+    "backgroundColor": "rgba(0,255,0,1)",
+},
+
+],
+/********** PAGE 4 *************/
+[
+{
+        "name": "TitleLabel4",
+        "type": "Label",
+        "bounds": [.330,.003,.330,.142],
+        "value": "Submaster P1",
+        "align": "center",
+        "oninit" : "TitleLabel4.label.style.fontFamily = 'arial';",
+},
+
+{
+    "name" : "sub1",
+    "type" : "Slider",
+    "x" : .005, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/1/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub1Label",
+	    "type": "Label",
+	    "x": .005,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 1",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub2",
+    "type" : "Slider",
+    "x" : .103, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/2/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub2Label",
+	    "type": "Label",
+	    "x": .102,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 2",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub3",
+    "type" : "Slider",
+    "x" : .200, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/3/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub3Label",
+	    "type": "Label",
+	    "x": .199,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 3",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub4",
+    "type" : "Slider",
+    "x" : .298, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/4/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub4Label",
+	    "type": "Label",
+	    "x": .297,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 4",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub5",
+    "type" : "Slider",
+    "x" : .395, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/5/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub5Label",
+	    "type": "Label",
+	    "x": .395,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 5",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub6",
+    "type" : "Slider",
+    "x" : .492, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/6/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub6Label",
+	    "type": "Label",
+	    "x": .491,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 6",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub7",
+    "type" : "Slider",
+    "x" : .588, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/7/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub7Label",
+	    "type": "Label",
+	    "x": .587,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 7",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub8",
+    "type" : "Slider",
+    "x" : .685, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/8/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub8Label",
+	    "type": "Label",
+	    "x": .684,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 8",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub9",
+    "type" : "Slider",
+    "x" : .782, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/9/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub9Label",
+	    "type": "Label",
+	    "x": .781,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub 9",
+	    "size" : 8,
+	},
+	{
+    "name" : "sub10",
+    "type" : "Slider",
+    "x" : .879, "y" : .148,
+    "width" : .095, "height" : .670,
+    "min" : 0, "max" : 255,
+    "address" : "/sub/10/level",
+    "isVertical" : true,
+    "isXFader" : false,
+	    "color": "#33CC00",
+"ontouchend": "if(this.value > 253 && this.value <255){this.setValue(255);};if(this.value > 0 && this.value < 2){this.setValue(0);};",
+},
+	{
+	    "name": "sub10Label",
+	    "type": "Label",
+	    "x": .877,
+	    "y": .700,
+	    "width": .095,
+	    "height": .1,
+	    "color": "#ffCC00",
+	    "value": "Sub10",
+	    "size" : 8,
+	},
 
 ],
 
 ];
 
-
-control.changePage(0);

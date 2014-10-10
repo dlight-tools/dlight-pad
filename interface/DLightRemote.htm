@@ -18,8 +18,6 @@ page1.add( xy )
 
 var page2 = new Interface.Panel();
 
-var onecolor = require("one-color")
-var colorjoe = require("colorjoe")
 var thisLabel = new Interface.Label({
                                     style:'bold',
                                     size: 70,
@@ -61,13 +59,7 @@ var thisLabel = new Interface.Label({
                                         ctx.fillRect(0,0,150,150);
                                     }
 
-var joe = colorjoe.hsl('hslPicker', 'red', [
-                                  'currentColor',
-                                  'alpha',
-                                  ['fields', {space: 'HSL', limit: 255, fix: 0},
-                                   'hex'
-                                   ]]);
-page2.add( thisLabel, joe )
+page2.add( thisLabel )
 
 
 var page3 = new Interface.Panel();

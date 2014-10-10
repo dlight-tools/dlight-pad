@@ -6,6 +6,7 @@
   <script>
 window.$ = Interface.get$()
 
+
 var page1 = new Interface.Panel();
 
 var xy = new Interface.XY({
@@ -17,14 +18,57 @@ page1.add( xy )
 
 var page2 = new Interface.Panel();
 
-var c = new Interface.Slider({
-  bounds:[0,0.2,1,1],
-  min:.0, max:.25,
-  value:.125,
-  fill:'#333', background:'#111',
-});
+var onecolor = require("one-color")
+var colorjoe = require("colorjoe")
+var thisLabel = new Interface.Label({
+                                    style:'bold',
+                                    size: 70,
+                                    bounds:[.5,0.5,0.5,1],
+                                    oninit: draw
+                                    });
+                                    
+                                    function draw() {
+                                        var ctx = thisLabel.ctx;
+                                        // Create gradients
+                                        var radgrad = ctx.createRadialGradient(45,45,10,52,50,30);
+                                        radgrad.addColorStop(0, '#A7D30C');
+                                        radgrad.addColorStop(0.9, '#019F62');
+                                        radgrad.addColorStop(1, 'rgba(1,159,98,0)');
+                                        
+                                        var radgrad2 = ctx.createRadialGradient(105,105,20,112,120,50);
+                                        radgrad2.addColorStop(0, '#FF5F98');
+                                        radgrad2.addColorStop(0.75, '#FF0188');
+                                        radgrad2.addColorStop(1, 'rgba(255,1,136,0)');
+                                        
+                                        var radgrad3 = ctx.createRadialGradient(95,15,15,102,20,40);
+                                        radgrad3.addColorStop(0, '#00C9FF');
+                                        radgrad3.addColorStop(0.8, '#00B5E2');
+                                        radgrad3.addColorStop(1, 'rgba(0,201,255,0)');
+                                        
+                                        var radgrad4 = ctx.createRadialGradient(0,150,50,0,140,90);
+                                        radgrad4.addColorStop(0, '#F4F201');
+                                        radgrad4.addColorStop(0.8, '#E4C700');
+                                        radgrad4.addColorStop(1, 'rgba(228,199,0,0)');
+                                        
+                                        // draw shapes
+                                        ctx.fillStyle = radgrad4;
+                                        ctx.fillRect(0,0,150,150);
+                                        ctx.fillStyle = radgrad3;
+                                        ctx.fillRect(0,0,150,150);
+                                        ctx.fillStyle = radgrad2;
+                                        ctx.fillRect(0,0,150,150);
+                                        ctx.fillStyle = radgrad;
+                                        ctx.fillRect(0,0,150,150);
+                                    }
 
-page2.add( c )
+var joe = colorjoe.hsl('hslPicker', 'red', [
+                                  'currentColor',
+                                  'alpha',
+                                  ['fields', {space: 'HSL', limit: 255, fix: 0},
+                                   'hex'
+                                   ]]);
+page2.add( thisLabel, joe )
+
 
 var page3 = new Interface.Panel();
 
@@ -59,6 +103,7 @@ getCurrentTime = function() {
     
     timer.timer = setTimeout(getCurrentTime, 1000);
 }
+
 
 /* ********************************
 
@@ -108,6 +153,7 @@ buttonPanel.ctx.font = '60pt Calibri';
 buttonPanel.ctx.strokeStyle = 'green';
 buttonPanel.ctx.strokeText('D::Light', 600,70);
 
+
 var pageNumber = 0
 
 var prevBtn = new Interface.Button({
@@ -126,8 +172,8 @@ var prevBtn = new Interface.Button({
 var nextBtn = new Interface.Button({
   bounds:[.35,0,0.25,1],
   label:'next page',
-                                   stroke:'red',
-                                   fill:'yellow',
+  stroke:'red',
+  fill:'yellow',
    mode:'contact',
   ontouchmouseup: function() {
     pageNumber += 1

@@ -1,6 +1,6 @@
 # Presentation
 Tools for d::light software.    
-More about d::light : http://nicole-banana.com
+More about d::light : http://www.getdlight.com
 # Contents
 ## dlight-pad
 Control Dlight from everywhere, from any device (IPhone, IPad, Android device)

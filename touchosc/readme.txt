@@ -1,6 +1,6 @@
-Dlight-pad_1.8
+DLPad
 
-Iphone/Ipod layout for TouchOSC software
+Iphone/Ipod/Android layout for TouchOSC software
 
 Require the TouchOSC Editor to open/synchronise
 Software available on editor's website http://hexler.net/software/touchosc
@@ -17,16 +17,16 @@ TouchOSC Setup
 
 D::Light Setup
 
-	OSC activated (green button)
+	OSC activated 
 	OSC Writer
-		IP Address	: Iphone/Ipod IP Address (see Local IP in the Network section of TouchOSC)
+		IP Address	: phone/pod IP Address (see Local IP in the Network section of TouchOSC)
 		Port			: 7001
 
 ------------------
 
-Dlight-pad_1.8
+DLPad
 
-Mise en page TouchOSC pour Iphone/Ipod
+Layout TouchOSC pour Iphone/Ipod/Android
 
 Le logiciel TouchOSC Editor est requis pour ouvrir/synchroniser ce fichier
 Ce logiciel est disponible sur le site web de l'éditeur http://hexler.net/software/touchosc
@@ -45,5 +45,5 @@ Configuration de D::Light
 
 	OSC activé (bouton vert)
 	OSC Writer
-		IP Address	: Adresse IP de l'Iphone/Ipod (Voir Local IP dans la section Network de TouchOSC)
+		IP Address	: Adresse IP du phone/pod (Voir Local IP dans la section Network de TouchOSC)
 		Port			: 7001
